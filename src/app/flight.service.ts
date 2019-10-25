@@ -14,12 +14,14 @@ const FLIGHTS = [
         date: new Date('9/24/2017'), 
         takeoff: 'Pilatus',
         landing: 'Kriens',
-        duration: 40
+        duration: 40,
+        rating: 4
     },
     {
         date: new Date('3/29/2018'), 
         takeoff: 'Hoch-Ybrig',
         landing: 'Weglosen Talstation',
-        duration: 30
+        duration: 30,
+        rating: 3
     }
 ]

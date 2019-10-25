@@ -4,11 +4,13 @@ import { FlightService } from './flight.service';
 @Component({
   selector: 'flight-log',
   template: `
-    <div>
+    <div class="container">
       <h1>Flight log</h1>
       <hr>
-      <div *ngFor="let flight of flights">
-        <flight [flight]="flight"></flight>
+      <div class="row">
+        <div *ngFor="let flight of flights" class="col-md-12">
+          <flight [flight]="flight"></flight>
+        </div>
       </div>
     </div>
   `
