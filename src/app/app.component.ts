@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'flight-log',
+  template: `
+    <p>
+      <ngb-alert [dismissible]="false">
+        Under construction
+      </ngb-alert>
+    </p>
+  `
 })
 export class AppComponent {
-  title = 'flight-log';
 }
