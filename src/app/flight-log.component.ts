@@ -9,8 +9,8 @@ import { ExportService } from './export.service';
   selector: 'flight-log',
   templateUrl: 'flight-log.component.html',
   styles: [`
-    .title { margin-right: 20px; }
-    .action-btn {margin-left: 5px; }
+    .title { margin-top: 10px; }
+    .action-btn {margin-right: 5px; }
   `]
 })
 export class FlightLogComponent implements OnInit {

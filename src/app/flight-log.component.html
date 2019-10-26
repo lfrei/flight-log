@@ -1,25 +1,25 @@
 <div class="container">
-<h1>
-    <span class="title">Flight log</span>
+<h3 class="title">Flight log</h3>
+<div>
     <button type="button" (click)="add()" class="btn btn-outline-primary action-btn" ngbTooltip="Add new flight">
-    <i class="fa fa-plus-circle"></i>
+        <i class="fa fa-plus-circle"></i>
     </button>
     <button type="button" (click)="stats()" class="btn btn-outline-primary action-btn" ngbTooltip="Show flight statistics">
-    <i class="fa fa-cogs"></i>
+        <i class="fa fa-cogs"></i>
     </button>
     <button type="button" (click)="export()" class="btn btn-outline-primary action-btn" ngbTooltip="Export flights">
-    <i class="fa fa-download"></i>
+        <i class="fa fa-download"></i>
     </button>
     <div class="btn-group mr-3 action-btn">
-    <button type="button" class="btn btn-outline-success" (click)="selectAll()">All</button>
-    <div class="btn-group" ngbDropdown role="group">
-        <button class="btn btn-outline-primary" ngbDropdownToggle>Filter Year</button>
-        <div class="dropdown-menu" ngbDropdownMenu>
-        <button *ngFor="let year of getYears()" (click)="selectYear(year)" ngbDropdownItem>{{year}}</button>
+        <button type="button" class="btn btn-outline-success" (click)="selectAll()">All</button>
+        <div class="btn-group" ngbDropdown role="group">
+            <button class="btn btn-outline-primary" ngbDropdownToggle>Filter Year</button>
+            <div class="dropdown-menu" ngbDropdownMenu>
+                <button *ngFor="let year of getYears()" (click)="selectYear(year)" ngbDropdownItem>{{year}}</button>
+            </div>
         </div>
     </div>
-    </div>
-</h1>
+</div>
 <hr>
 <div class="row">
     <div *ngFor="let flight of filteredFlights" class="col-md-12">

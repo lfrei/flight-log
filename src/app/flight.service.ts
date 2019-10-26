@@ -23,8 +23,7 @@ export class FlightService {
         } else if(flight.rating < 1){
             flight.rating = 1
         }
-
-
+        
         FLIGHTS.push(flight)
       }
 }
