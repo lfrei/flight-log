@@ -18,6 +18,13 @@ export class FlightService {
         flight.id = Math.max.apply(null, FLIGHTS.map(s => s.id)) + 1
         flight.date = new Date(flight.date.year, flight.date.month - 1, flight.date.day);
         
+        if(flight.rating > 5){
+            flight.rating = 5
+        } else if(flight.rating < 1){
+            flight.rating = 1
+        }
+
+
         FLIGHTS.push(flight)
       }
 }

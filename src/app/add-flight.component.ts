@@ -4,7 +4,10 @@ import { FlightService } from './flight.service';
 
 @Component({
     selector: 'add-flight',
-    templateUrl: 'add-flight.component.html'
+    templateUrl: 'add-flight.component.html',
+    styles: [`
+        em {float:right; color:#E05C65; padding-left:10px; }
+    `]
 })
 export class AddFlightComponent {
     newFlight
