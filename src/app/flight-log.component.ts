@@ -12,7 +12,7 @@ import { FlightService } from './flight.service';
       <hr>
       <div class="row">
         <div *ngFor="let flight of flights" class="col-md-12">
-          <flight [flight]="flight" (click)="open(flight)"></flight>
+          <flight [flight]="flight"></flight>
         </div>
       </div>
     </div>
@@ -32,11 +32,6 @@ export class FlightLogComponent implements OnInit {
 
   add(){
     console.log("Add flight")
-    //open modal dialog
-  }
-
-  open(flight){
-    console.log("Open flight: " + flight)
     //open modal dialog
   }
 

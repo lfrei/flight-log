@@ -7,10 +7,15 @@ export class FlightService {
         return FLIGHTS
     }
 
+    removeFlight(flight) {
+        let index = FLIGHTS.findIndex(x => x.id = flight.id)
+        FLIGHTS.splice(index, 1)
+    }
 }
 
 const FLIGHTS = [
     {
+        id: 1,
         date: new Date('9/24/2017'), 
         takeoff: 'Pilatus',
         landing: 'Kriens',
@@ -19,6 +24,7 @@ const FLIGHTS = [
         rating: 4
     },
     {
+        id: 2,
         date: new Date('3/29/2018'), 
         takeoff: 'Hoch-Ybrig',
         landing: 'Weglosen Talstation',
