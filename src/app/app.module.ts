@@ -8,13 +8,15 @@ import { FlightLogComponent } from './flight-log.component';
 import { FlightDetailComponent } from './flight-detail.component';
 import { AddFlightComponent } from './add-flight.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StatsComponent } from './stats.component';
 
 @NgModule({
   declarations: [
     FlightLogComponent,
     FlightComponent,
     FlightDetailComponent,
-    AddFlightComponent
+    AddFlightComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FlightService
   ],
   bootstrap: [FlightLogComponent],
-  entryComponents: [AddFlightComponent]
+  entryComponents: [
+    AddFlightComponent,
+    StatsComponent
+  ]
 })
 export class AppModule { }
