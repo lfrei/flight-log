@@ -8,9 +8,18 @@ export class FlightService {
     }
 
     removeFlight(flight) {
-        let index = FLIGHTS.findIndex(x => x.id = flight.id)
-        FLIGHTS.splice(index, 1)
+        let index = FLIGHTS.findIndex(x => x.id === flight.id)
+        if (index !== -1) {
+            FLIGHTS.splice(index, 1)
+        } 
     }
+
+    addFlight(flight) {
+        flight.id = Math.max.apply(null, FLIGHTS.map(s => s.id)) + 1
+        flight.date = new Date(flight.date.year, flight.date.month - 1, flight.date.day);
+        
+        FLIGHTS.push(flight)
+      }
 }
 
 const FLIGHTS = [

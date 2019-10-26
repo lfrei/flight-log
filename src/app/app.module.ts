@@ -6,20 +6,26 @@ import { FlightService } from './flight.service';
 import { FlightComponent } from './flight.component';
 import { FlightLogComponent } from './flight-log.component';
 import { FlightDetailComponent } from './flight-detail.component';
+import { AddFlightComponent } from './add-flight.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     FlightLogComponent,
     FlightComponent,
-    FlightDetailComponent
+    FlightDetailComponent,
+    AddFlightComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     FlightService
   ],
-  bootstrap: [FlightLogComponent]
+  bootstrap: [FlightLogComponent],
+  entryComponents: [AddFlightComponent]
 })
 export class AppModule { }

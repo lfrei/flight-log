@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightService } from './flight.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddFlightComponent } from './add-flight.component';
 
 @Component({
   selector: 'flight-log',
@@ -24,15 +26,14 @@ import { FlightService } from './flight.service';
 export class FlightLogComponent implements OnInit {
   flights
 
-  constructor(private flightService:FlightService){}
+  constructor(private flightService:FlightService, private modalService: NgbModal){}
 
   ngOnInit() {
     this.flights = this.flightService.getFlights()
   }
 
   add(){
-    console.log("Add flight")
-    //open modal dialog
+    this.modalService.open(AddFlightComponent);
   }
 
 }

@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Flight</h4>
+</div>
+<form #newFlightForm="ngForm" (ngSubmit)="saveFlight(newFlightForm.value)" autocomplete="off" novalidate>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="flightDate">Date</label>
+            <div class="input-group">
+                <input (ngModel)="newFlight.date" name="date" id="flightDate" class="form-control" placeholder="yyyy-mm-dd" name="date" ngbDatepicker #dp="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary fa fa-calendar" (click)="dp.toggle()" type="button"></button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flightTakeoff">Takeoff</label>
+            <input (ngModel)="newFlight.takeoff" name="takeoff" required id="flightTakeoff" type="text" class="form-control" placeholder="takeoff location..." />
+        </div>
+        <div class="form-group">
+            <label for="flightLanding">Landing</label>
+            <input (ngModel)="newFlight.landing" name="landing" required id="flightLanding" type="text" class="form-control" placeholder="landing location..." />
+        </div>
+        <div class="form-group">
+            <label for="flightDuration">Duration</label>
+            <input (ngModel)="newFlight.duration" name="duration" required id="flightDuration" type="text" type="number" class="form-control" placeholder="flight duration in minutes..." />
+        </div>
+        <div class="form-group">
+            <label for="flightDescription">Description</label>
+            <textarea (ngModel)="newFlight.description" name="description" required id="flightDescription" type="text" class="form-control" placeholder="detail description..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="flightRating">Rating</label>
+            <input (ngModel)="newFlight.rating" name="rating" required id="flightRating" type="text" type="number" class="form-control" placeholder="rate flight 1-5..." />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark">Add</button>
+        <button type="button" class="btn btn-outline-dark" (click)="close()">Close</button>
+    </div>
+</form>
