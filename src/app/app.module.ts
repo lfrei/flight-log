@@ -5,11 +5,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlightService } from './flight.service';
 import { FlightComponent } from './flight.component';
 import { FlightLogComponent } from './flight-log.component';
+import { FlightDetailComponent } from './flight-detail.component';
 
 @NgModule({
   declarations: [
     FlightLogComponent,
-    FlightComponent
+    FlightComponent,
+    FlightDetailComponent
   ],
   imports: [
     BrowserModule,

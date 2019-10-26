@@ -15,6 +15,7 @@ const FLIGHTS = [
         takeoff: 'Pilatus',
         landing: 'Kriens',
         duration: 40,
+        description: 'Wunderschöner Abendflug',
         rating: 4
     },
     {
@@ -22,6 +23,7 @@ const FLIGHTS = [
         takeoff: 'Hoch-Ybrig',
         landing: 'Weglosen Talstation',
         duration: 30,
+        description: 'Saisonstart, gute Thermik',
         rating: 3
     }
 ]
