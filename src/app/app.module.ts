@@ -9,6 +9,7 @@ import { FlightDetailComponent } from './flight-detail.component';
 import { AddFlightComponent } from './add-flight.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatsComponent } from './stats.component';
+import { ExportService } from './export.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StatsComponent } from './stats.component';
     ReactiveFormsModule
   ],
   providers: [
-    FlightService
+    FlightService,
+    ExportService
   ],
   bootstrap: [FlightLogComponent],
   entryComponents: [

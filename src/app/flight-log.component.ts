@@ -3,28 +3,11 @@ import { FlightService } from './flight.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddFlightComponent } from './add-flight.component';
 import { StatsComponent } from './stats.component';
+import { ExportService } from './export.service';
 
 @Component({
   selector: 'flight-log',
-  template: `
-    <div class="container">
-      <h1>
-        <span class="title">Flight log</span>
-        <button type="button" (click)="add()" class="btn btn-outline-primary action-btn">
-          <i class="fa fa-plus-circle"></i>
-        </button>
-        <button type="button" (click)="stats()" class="btn btn-outline-primary action-btn">
-          <i class="fa fa-cogs"></i>
-        </button>
-      </h1>
-      <hr>
-      <div class="row">
-        <div *ngFor="let flight of flights" class="col-md-12">
-          <flight [flight]="flight"></flight>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: 'flight-log.component.html',
   styles: [`
     .title { margin-right: 20px; }
     .action-btn {margin-left: 5px; }
@@ -32,11 +15,23 @@ import { StatsComponent } from './stats.component';
 })
 export class FlightLogComponent implements OnInit {
   flights
+  filteredFlights
 
-  constructor(private flightService:FlightService, private modalService: NgbModal){}
+  constructor(
+    private flightService:FlightService, 
+    private modalService: NgbModal,
+    private exportService:ExportService){}
 
   ngOnInit() {
     this.flights = this.flightService.getFlights()
+    this.filteredFlights = this.flights
+  }
+
+  getYears(): [] {
+    return this.flights
+        .map(flight => flight.date.getFullYear())
+        .filter((value, index, self) => self.indexOf(value) === index)
+        .sort()
   }
 
   add(){
@@ -45,7 +40,19 @@ export class FlightLogComponent implements OnInit {
 
   stats(){
     const modalRef = this.modalService.open(StatsComponent);
-    modalRef.componentInstance.flights = this.flights;
+    modalRef.componentInstance.flights = this.filteredFlights;
+  }
+
+  export(){
+    this.exportService.exportJson(this.filteredFlights);
+  }
+
+  selectYear(year){
+    this.filteredFlights = this.flights.filter(flight => flight.date.getFullYear() === year)
+  }
+
+  selectAll(){
+    this.filteredFlights = this.flights
   }
 
 }
