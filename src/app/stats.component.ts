@@ -14,7 +14,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
         </div>
         <div class="row">
             <div class="col-md-6">Total Flight duration:</div>
-            <div class="col-md-6">{{totalDuration}}</div>
+            <div class="col-md-6">{{secondsToDhm(totalDuration)}}</div>
         </div>
     </div>
     <div class="modal-footer">
@@ -30,10 +30,22 @@ export class StatsComponent implements OnInit {
     constructor(public activeModal: NgbActiveModal) {}
 
     ngOnInit(){
-        if(this.flights) {
+        if (this.flights) {
             this.totalFlights = this.flights.length
             this.totalDuration = this.flights.reduce((sum, current) => sum + current.duration, 0);
         }
+    }
+
+    secondsToDhm(minutes) {
+        const seconds = Number(minutes * 60);
+        const d = Math.floor(seconds / (3600 * 24));
+        const h = Math.floor(seconds % (3600 * 24) / 3600);
+        const m = Math.floor(seconds % 3600 / 60);
+
+        const dDisplay = d > 0 ? d + (d === 1 ? ' day, ' : ' days, ') : '';
+        const hDisplay = h > 0 ? h + (h === 1 ? ' hour, ' : ' hours, ') : '';
+        const mDisplay = m > 0 ? m + (m === 1 ? ' minute ' : ' minutes ') : '';
+        return dDisplay + hDisplay + mDisplay;
     }
 
 }
