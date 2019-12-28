@@ -13,6 +13,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
             <div class="col-md-6">{{totalFlights}}</div>
         </div>
         <div class="row">
+            <div class="col-md-6">Total Flight days:</div>
+            <div class="col-md-6">{{totalFlightDays}}</div>
+        </div>
+        <div class="row">
             <div class="col-md-6">Total Flight duration:</div>
             <div class="col-md-6">{{secondsToDhm(totalDuration)}}</div>
         </div>
@@ -25,15 +29,37 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class StatsComponent implements OnInit {
     @Input() flights
     totalFlights
+    totalFlightDays
     totalDuration
 
     constructor(public activeModal: NgbActiveModal) {}
 
     ngOnInit(){
         if (this.flights) {
-            this.totalFlights = this.flights.length
-            this.totalDuration = this.flights.reduce((sum, current) => sum + current.duration, 0);
+            this.totalFlights = this.flights.length;
+            this.totalFlightDays = this.getFlightDays(this.flights);
+            this.totalDuration = this.getDuration(this.flights);
         }
+    }
+
+    getFlightDays(flights) {
+        return flights
+            .map(flight => this.toDayOnly(flight.date))
+            .map(date => date.getTime())
+            .filter((date, index, self) => index === self.indexOf(date))
+            .length;
+    }
+
+    toDayOnly(date) {
+        return new Date(Date.UTC(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate()));
+    }
+
+    getDuration(flights) {
+        return flights
+            .reduce((sum, current) => sum + current.duration, 0);
     }
 
     secondsToDhm(minutes) {
